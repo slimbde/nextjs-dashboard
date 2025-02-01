@@ -1,6 +1,9 @@
 import SideNav from '@/app/ui/dashboard/sidenav';
 import { lusitana } from '@/app/ui/fonts';
 
+// this is to prevent static page in prod
+export const dynamic = 'force-dynamic';
+
 export default function Layout({
   cards,
   revenue,
