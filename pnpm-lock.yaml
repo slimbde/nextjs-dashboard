@@ -81,6 +81,9 @@ importers:
       eslint-config-prettier:
         specifier: ^9.1.0
         version: 9.1.0(eslint@9.17.0(jiti@1.21.6))
+      eslint-plugin-css-modules:
+        specifier: ^2.12.0
+        version: 2.12.0(eslint@9.17.0(jiti@1.21.6))
       eslint-plugin-prettier:
         specifier: ^5.2.1
         version: 5.2.1(eslint-config-prettier@9.1.0(eslint@9.17.0(jiti@1.21.6)))(eslint@9.17.0(jiti@1.21.6))(prettier@3.4.2)
@@ -883,6 +886,12 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
 
+  eslint-plugin-css-modules@2.12.0:
+    resolution: {integrity: sha512-ruFBdad69ABrbCDCh5mXj7UzNmrvytfzPACjyvZWIAjFZAG8BXpYSbqmE8gU5wF+pIzV3jU2CWhLvfekXT/IgQ==}
+    engines: {node: '>=4.0.0'}
+    peerDependencies:
+      eslint: '>=2.0.0'
+
   eslint-plugin-import@2.31.0:
     resolution: {integrity: sha512-ixmkI62Rbc2/w8Vfxyh1jQRTdRTF52VxwRVHl/ykPAmqG+Nb7/kNn+byLP0LxPgI7zWA16Jt82SybJInmMia3A==}
     engines: {node: '>=4'}
@@ -1080,6 +1089,11 @@ packages:
   globalthis@1.0.4:
     resolution: {integrity: sha512-DpLKbNU4WylpxJykQujfCcwYWiV/Jhm50Goo0wrVILAv5jOr9d+H+UR3PhSCD2rCCEIg0uc+G+muBTwD54JhDQ==}
     engines: {node: '>= 0.4'}
+
+  gonzales-pe@4.3.0:
+    resolution: {integrity: sha512-otgSPpUmdWJ43VXyiNgEYE4luzHCL2pz4wQ0OnDluC6Eg4Ko3Vexy/SrSynglw/eR+OhkzmqFCZa/OFa/RgAOQ==}
+    engines: {node: '>=0.6.0'}
+    hasBin: true
 
   gopd@1.2.0:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
@@ -1332,6 +1346,9 @@ packages:
 
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
+
+  lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
 
   loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
@@ -2948,6 +2965,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  eslint-plugin-css-modules@2.12.0(eslint@9.17.0(jiti@1.21.6)):
+    dependencies:
+      eslint: 9.17.0(jiti@1.21.6)
+      gonzales-pe: 4.3.0
+      lodash: 4.17.21
+
   eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.7.2))(eslint-import-resolver-typescript@3.7.0)(eslint@9.17.0(jiti@1.21.6)):
     dependencies:
       '@rtsao/scc': 1.1.0
@@ -3247,6 +3270,10 @@ snapshots:
       define-properties: 1.2.1
       gopd: 1.2.0
 
+  gonzales-pe@4.3.0:
+    dependencies:
+      minimist: 1.2.8
+
   gopd@1.2.0: {}
 
   graceful-fs@4.2.11: {}
@@ -3489,6 +3516,8 @@ snapshots:
       p-locate: 5.0.0
 
   lodash.merge@4.6.2: {}
+
+  lodash@4.17.21: {}
 
   loose-envify@1.4.0:
     dependencies:
