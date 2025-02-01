@@ -1,3 +1,3 @@
-export default function Loading() {
-  return <div className='w-full h-40'>Loading cards...</div>;
-}
+import { CardsSkeleton } from '@/app/ui/skeletons';
+
+export default CardsSkeleton;

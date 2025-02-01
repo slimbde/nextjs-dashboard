@@ -26,7 +26,7 @@ export default function Layout({
 
           {cards}
 
-          <div className='mt-6 flex'>
+          <div className='mt-6 flex gap-6'>
             {revenue}
             {invoices}
           </div>
