@@ -1,3 +1,3 @@
 export default function Loading() {
-  return <div>Loading cards...</div>;
+  return <div className='w-full h-40'>Loading cards...</div>;
 }
