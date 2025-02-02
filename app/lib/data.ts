@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { sql } from '@vercel/postgres';
 import {
   CustomerField,
@@ -8,6 +9,13 @@ import {
   Revenue,
 } from './definitions';
 import { formatCurrency } from './utils';
+import { unstable_cache } from 'next/cache';
+
+const cacheWrapper = <T>(
+  cb: (...params: any) => Promise<T>,
+  tag: string,
+  ms: number,
+) => unstable_cache(cb, [tag], { revalidate: ms });
 
 export async function fetchRevenue() {
   try {
@@ -85,10 +93,7 @@ export async function fetchCardData() {
 }
 
 const ITEMS_PER_PAGE = 6;
-export async function fetchFilteredInvoices(
-  query: string,
-  currentPage: number,
-) {
+async function fetchFilteredInvoicesCb(query: string, currentPage: number) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
@@ -120,7 +125,7 @@ export async function fetchFilteredInvoices(
   }
 }
 
-export async function fetchInvoicesPages(query: string) {
+async function fetchInvoicesPagesCb(query: string) {
   try {
     const count = await sql`SELECT COUNT(*)
     FROM invoices
@@ -166,7 +171,7 @@ export async function fetchInvoiceById(id: string) {
   }
 }
 
-export async function fetchCustomers() {
+async function fetchCustomersCb() {
   try {
     const data = await sql<CustomerField>`
       SELECT
@@ -216,3 +221,21 @@ export async function fetchFilteredCustomers(query: string) {
     throw new Error('Failed to fetch customer table.');
   }
 }
+
+export const fetchFilteredInvoices = cacheWrapper(
+  fetchFilteredInvoicesCb,
+  'invoices-table',
+  3_600,
+);
+
+export const fetchInvoicesPages = cacheWrapper(
+  fetchInvoicesPagesCb,
+  'invoices',
+  3_600,
+);
+
+export const fetchCustomers = cacheWrapper(
+  fetchCustomersCb,
+  'customers',
+  3_600,
+);
