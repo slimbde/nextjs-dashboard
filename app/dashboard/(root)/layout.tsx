@@ -3,6 +3,7 @@ import { lusitana } from '@/app/ui/fonts';
 
 // this is to prevent static page in prod
 export const dynamic = 'force-dynamic';
+export const experimental_ppr = true;
 
 export default function Layout({
   cards,
